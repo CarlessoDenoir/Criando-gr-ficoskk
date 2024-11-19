@@ -1,56 +1,33 @@
-    import { Getcss, tickconfig } from "./common.js";
-async function quantidadedeUsuariosPorRede() {
-    const url = 'https://raw.githubcontent.com/guilherrmeonrails/api/main/numero-usuarios.json'
-    const res = await fetch (url)
+import { getCSS } from "./common.js"
+
+async function quantidadeUsuariosPorRede() {
+    const url = 'https://raw.githubusercontent.com/guilhermeonrails/api/main/numero-usuarios.json'
+    const res = await fetch(url)
     const dados = await res.json()
-    const nomesDasRedes = Object.keys (dados)
-    const quantidadeDeusuarios = Object.values (dados)
+    const nomeDasRedes = Object.keys(dados)
+    const quantidadeDeUsuarios = Object.values(dados)
 
     const data = [
-    {
-        x: nomesDasRedes,
-        y: quantidadeDeusuarios,
-        type: 'bar',
-        marker {
-            color: Getcss ('--primaryColor')
+        {
+            x: nomeDasRedes, 
+            y: quantidadeDeUsuarios, 
+            type: 'bar',
+            marker: {
+                color: getCSS('--primary-color')
+            }
         }
-    }
-]
+    ]
 
-const layout = {
-    plot_bgcolor: Getcss ('--bg-color'),
-    papper_bgcolor: Getcss('--bg-color'),
-    title: {
-        Text: "redes sociais com mais usuários",
-        x: 0,
-        font: {
-            color: Getcss ('--primary-color'),
-            size: 30,
-            font: Getcss  ('--font')
-        }
-    },
-    xaxis: {
-        tickfront: tickconfig
-        title: {
-          Text: 'nomes Das Redes',
-          font: {
-            color: Getcss('--secundary-color')
-          }
-        }
-    },
-yaxis: {
-    tickfont: tickconfig,
-    title: {
-    Text: 'Bilhões de usuários ativos',
-    font: {
-        color: Getcss('--secundary-color')
-    }    
+    const layout = {
+        plot_bgcolor: getCSS('--bg-color'),
+        paper_bgcolor: getCSS('--bg-color')
+
+    }
+
+    const grafico = document.createElement('div')
+    grafico.className = 'grafico'
+    document.getElementById('graficos-container').appendChild(grafico)
+    Plotly.newPlot(grafico, data, layout)
 }
-}
-}
-const grafico = document.createElement('div')
-grafico.className = 'grafico'
-document.getElementById ('graficos-container').appendChild(grafico
-plotly.newplot(grafico,data,layout)
-)
-quantidadedeUsuariosPorRede()
+
+quantidadeUsuariosPorRede()

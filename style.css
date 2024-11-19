@@ -27,7 +27,7 @@ h1 {
     font-weight: 700;
 }
 
-nav  { 
+nav {
     display: flex;
     justify-content: center;
     font-weight: 400;
@@ -40,21 +40,17 @@ nav a {
     font-size: 1.2rem;
 }
 
-nav a :hover {
+nav a:hover {
     text-decoration: underline;
     transform: scale(0.90);
-    transition: transform(0,1s);
+    transition: transform 0.1s;
 }
 
-.graficos-conteiner {
+.graficos-container {
     margin: 5rem;
 }
 
-.grafico {
-    margin-top: 3rem;
-}
-
-.graficos-conteiner__texto {
+.graficos-container__texto {
     font-size: 1.3rem;
     text-align: center;
     padding: 2rem;
