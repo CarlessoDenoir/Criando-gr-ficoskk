@@ -1,11 +1,11 @@
-import { Getcss, criandograficos, incluirtexto } from "./common.js"
+import { getCSS, criarGrafico, incluirTexto } from "./common.js"
 
-async function RedesFavoritasMundo() {
+async function redesFavoritasMundo() {
     const url = 'https://raw.githubusercontent.com/guilhermeonrails/api/main/redes-favoritas.json'
     const res = await fetch(url)
     const dados = await res.json()
     const redes = Object.keys(dados)
-    const valores = object.values(dados)
+    const valores = Object.values(dados)
 
     const data = [
         {
@@ -17,29 +17,29 @@ async function RedesFavoritasMundo() {
     ]
 
     const layout = {
-        plot_bgcolor: Getcss ('--bg-color'),
-        paper_bgcolor: Getcss ('--bg-color'),
+        plot_bgcolor: getCSS('--bg-color'),
+        paper_bgcolor: getCSS('--bg-color'),
         height: 700,
         title: {
-            Text: 'Redes sociais que os usuários mais gostam',
-            x: 0
+            text: 'Redes sociais que os usuários mais gostam',
+            x: 0,
             font: {
-                color: Getcss ('--primary-color'),
-                family: Getcss('--font'),
+                color: getCSS('--primary-color'),
+                family: getCSS('--font'),
                 size: 30
             }
         },
         legend: {
             font: {
-                color: Getcss ('--primary-color'),
+                color: getCSS('--primary-color'),
                 size: 16
             }
         }
     }
 
-    Criargrafico(data, layout)
+    criarGrafico(data, layout)
 
-    incluirtexto (`Embora o <span>Instagram</span> ocupe a quarta posição em termos de número total de usuários entre as redes sociais, destaca-se como a <span>preferida pelos usuários</span>. Supera até mesmo o <span>Facebook</span>, a plataforma com mais usuários, sendo a terceira opção mais apreciada pelos usuários. <br>Essa preferência evidencia a forte conexão e apreço que as pessoas têm pelo Instagram em comparação com outras redes sociais`)
-
+    incluirTexto(`Embora o <span>Instagram</span> ocupe a quarta posição em termos de número total de usuários entre as redes sociais, destaca-se como a <span>preferida pelos usuários</span>. Supera até mesmo o <span>Facebook</span>, a plataforma com mais usuários, sendo a terceira opção mais apreciada pelos usuários. <br>Essa preferência evidencia a forte conexão e apreço que as pessoas têm pelo Instagram em comparação com outras redes sociais`)
 }
-RedesFavoritasMundo()
+
+redesFavoritasMundo()
